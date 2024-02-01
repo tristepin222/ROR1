@@ -1,0 +1,2 @@
+module SemesterHasExamsHelper
+end
