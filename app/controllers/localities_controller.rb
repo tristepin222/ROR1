@@ -65,6 +65,6 @@ class LocalitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def locality_params
-      params.require(:locality).permit(:PC, :name)
+      params.require(:locality).permit(:postal_code, :name)
     end
 end
