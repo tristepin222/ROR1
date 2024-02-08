@@ -1,0 +1,22 @@
+<div id="<%= dom_id person_learn_subject %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Learn date:</strong>
+    <%= person_learn_subject.learn_date %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Person:</strong>
+    <%= person_learn_subject.person_id %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Subject:</strong>
+    <%= person_learn_subject.subject_id %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this person learn subject", person_learn_subject, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this person learn subject", edit_person_learn_subject_path(person_learn_subject), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

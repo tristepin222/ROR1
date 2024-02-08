@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_01_164842) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_08_101003) do
+  create_table "classrooms", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.integer "room"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "exams", force: :cascade do |t|
     t.datetime "date"
     t.string "title"
@@ -19,17 +27,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_164842) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_exams_on_subject_id"
-  end
-
-  create_table "historics", force: :cascade do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.string "status"
-    t.string "current_class"
-    t.integer "person_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_historics_on_person_id"
   end
 
   create_table "localities", force: :cascade do |t|
@@ -54,57 +51,73 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_01_164842) do
     t.index ["locality_id"], name: "index_people_on_locality_id"
   end
 
-  create_table "person_has_exams", force: :cascade do |t|
+  create_table "person_belongs_to_classrooms", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
     t.integer "person_id", null: false
-    t.integer "exam_id", null: false
-    t.decimal "grade"
+    t.integer "classroom_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exam_id"], name: "index_person_has_exams_on_exam_id"
-    t.index ["person_id"], name: "index_person_has_exams_on_person_id"
+    t.index ["classroom_id"], name: "index_person_belongs_to_classrooms_on_classroom_id"
+    t.index ["person_id"], name: "index_person_belongs_to_classrooms_on_person_id"
   end
 
-  create_table "person_has_subjects", force: :cascade do |t|
+  create_table "person_evaluate_exams", force: :cascade do |t|
+    t.date "exam_date"
+    t.integer "person_id", null: false
+    t.integer "exam_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_person_evaluate_exams_on_exam_id"
+    t.index ["person_id"], name: "index_person_evaluate_exams_on_person_id"
+  end
+
+  create_table "person_have_exams", force: :cascade do |t|
+    t.integer "grade"
+    t.integer "person_id", null: false
+    t.integer "exam_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_person_have_exams_on_exam_id"
+    t.index ["person_id"], name: "index_person_have_exams_on_person_id"
+  end
+
+  create_table "person_learn_subjects", force: :cascade do |t|
+    t.date "learn_date"
     t.integer "person_id", null: false
     t.integer "subject_id", null: false
-    t.integer "current_class"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["person_id"], name: "index_person_has_subjects_on_person_id"
-    t.index ["subject_id"], name: "index_person_has_subjects_on_subject_id"
+    t.index ["person_id"], name: "index_person_learn_subjects_on_person_id"
+    t.index ["subject_id"], name: "index_person_learn_subjects_on_subject_id"
   end
 
-  create_table "semester_has_exams", force: :cascade do |t|
-    t.integer "semester_id", null: false
-    t.integer "exam_id", null: false
+  create_table "person_teach_subjects", force: :cascade do |t|
+    t.date "teach_date"
+    t.integer "person_id", null: false
+    t.integer "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["exam_id"], name: "index_semester_has_exams_on_exam_id"
-    t.index ["semester_id"], name: "index_semester_has_exams_on_semester_id"
-  end
-
-  create_table "semesters", force: :cascade do |t|
-    t.integer "number"
-    t.string "years"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_person_teach_subjects_on_person_id"
+    t.index ["subject_id"], name: "index_person_teach_subjects_on_subject_id"
   end
 
   create_table "subjects", force: :cascade do |t|
     t.string "name"
-    t.decimal "coefficient"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "exams", "subjects"
-  add_foreign_key "historics", "people"
   add_foreign_key "people", "localities"
-  add_foreign_key "person_has_exams", "exams"
-  add_foreign_key "person_has_exams", "people"
-  add_foreign_key "person_has_subjects", "people"
-  add_foreign_key "person_has_subjects", "subjects"
-  add_foreign_key "semester_has_exams", "exams"
-  add_foreign_key "semester_has_exams", "semesters"
+  add_foreign_key "person_belongs_to_classrooms", "classrooms"
+  add_foreign_key "person_belongs_to_classrooms", "people"
+  add_foreign_key "person_evaluate_exams", "exams"
+  add_foreign_key "person_evaluate_exams", "people"
+  add_foreign_key "person_have_exams", "exams"
+  add_foreign_key "person_have_exams", "people"
+  add_foreign_key "person_learn_subjects", "people"
+  add_foreign_key "person_learn_subjects", "subjects"
+  add_foreign_key "person_teach_subjects", "people"
+  add_foreign_key "person_teach_subjects", "subjects"
 end

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :semester_has_exams
-  resources :semesters
-  resources :person_has_exams
+
+  resources :person_learn_subjects
+  resources :person_teach_subjects
+  resources :person_evaluate_exams
+  resources :person_have_exams
+  resources :person_belongs_to_classrooms
+  resources :classrooms
   resources :exams
-  resources :person_has_subjects
   resources :subjects
-  resources :historics
   resources :people
   resources :localities
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
