@@ -41,7 +41,7 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Locality:</strong>
-    <%= person.locality_id %>
+    <%= person.locality.postal_code .. person.locality.name %>
   </p>
 
   <% if action_name != "show" %>
