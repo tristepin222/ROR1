@@ -17,7 +17,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
 
   test "should create person" do
     assert_difference("Person.count") do
-      post people_url, params: { person: { address: @person.address, birthdate: @person.birthdate, email: @person.email, firstname: @person.firstname, gender: @person.gender, isteacher: @person.isteacher, lastname: @person.lastname, locality_id: @person.locality_id, phonenumber: @person.phonenumber } }
+      post people_url, params: { person: { address: @person.address, birth_date: @person.birth_date, email: @person.email, first_name: @person.first_name, gender: @person.gender, is_teacher: @person.is_teacher, last_name: @person.last_name, locality_id: @person.locality_id, phone_number: @person.phone_number } }
     end
 
     assert_redirected_to person_url(Person.last)
@@ -34,7 +34,7 @@ class PeopleControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update person" do
-    patch person_url(@person), params: { person: { address: @person.address, birthdate: @person.birthdate, email: @person.email, firstname: @person.firstname, gender: @person.gender, isteacher: @person.isteacher, lastname: @person.lastname, locality_id: @person.locality_id, phonenumber: @person.phonenumber } }
+    patch person_url(@person), params: { person: { address: @person.address, birth_date: @person.birth_date, email: @person.email, first_name: @person.first_name, gender: @person.gender, is_teacher: @person.is_teacher, last_name: @person.last_name, locality_id: @person.locality_id, phone_number: @person.phone_number } }
     assert_redirected_to person_url(@person)
   end
 

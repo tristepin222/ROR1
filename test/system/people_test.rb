@@ -15,14 +15,14 @@ class PeopleTest < ApplicationSystemTestCase
     click_on "New person"
 
     fill_in "Address", with: @person.address
-    fill_in "Birthdate", with: @person.birthdate
+    fill_in "Birthdate", with: @person.birth_date
     fill_in "Email", with: @person.email
-    fill_in "Firstname", with: @person.firstname
+    fill_in "Firstname", with: @person.first_name
     fill_in "Gender", with: @person.gender
-    check "Isteacher" if @person.isteacher
-    fill_in "Lastname", with: @person.lastname
+    check "Isteacher" if @person.is_teacher
+    fill_in "last_name", with: @person.last_name
     fill_in "Locality", with: @person.locality_id
-    fill_in "Phonenumber", with: @person.phonenumber
+    fill_in "Phonenumber", with: @person.phone_number
     click_on "Create Person"
 
     assert_text "Person was successfully created"
@@ -34,14 +34,14 @@ class PeopleTest < ApplicationSystemTestCase
     click_on "Edit this person", match: :first
 
     fill_in "Address", with: @person.address
-    fill_in "Birthdate", with: @person.birthdate
+    fill_in "Birthdate", with: @person.birth_date
     fill_in "Email", with: @person.email
-    fill_in "Firstname", with: @person.firstname
+    fill_in "Firstname", with: @person.first_name
     fill_in "Gender", with: @person.gender
-    check "Isteacher" if @person.isteacher
-    fill_in "Lastname", with: @person.lastname
+    check "Isteacher" if @person.is_teacher
+    fill_in "last_name", with: @person.last_name
     fill_in "Locality", with: @person.locality_id
-    fill_in "Phonenumber", with: @person.phonenumber
+    fill_in "Phonenumber", with: @person.phone_number
     click_on "Update Person"
 
     assert_text "Person was successfully updated"
