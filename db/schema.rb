@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_08_101003) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_07_103047) do
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
     t.integer "number"
     t.integer "room"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_classrooms_on_name", unique: true
   end
 
   create_table "exams", force: :cascade do |t|
@@ -45,10 +46,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_08_101003) do
     t.string "phone_number"
     t.string "email"
     t.boolean "is_teacher"
-    t.integer "locality_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "locality_id"
+    t.index ["email"], name: "index_people_on_email", unique: true
     t.index ["locality_id"], name: "index_people_on_locality_id"
+    t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
   end
 
   create_table "person_belongs_to_classrooms", force: :cascade do |t|
