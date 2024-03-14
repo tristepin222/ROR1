@@ -1,8 +1,9 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: %i[ show edit update destroy ]
+  before_action :authenticate_person!, :set_person, only: %i[ show edit update destroy ]
 
   # GET /people or /people.json
   def index
+    puts current_person.first_name
     @people = Person.all
   end
 
@@ -13,6 +14,8 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
+    @person.build_locality
+    @person.classrooms.build
   end
 
   # GET /people/1/edit
@@ -22,7 +25,6 @@ class PeopleController < ApplicationController
   # POST /people or /people.json
   def create
     @person = Person.new(person_params)
-
     respond_to do |format|
       if @person.save
         format.html { redirect_to person_url(@person), notice: "Person was successfully created." }
@@ -65,6 +67,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:gender, :first_name, :last_name, :birth_date, :address, :phone_number, :email, :is_teacher, :locality_id)
+      params.require(:person).permit(:gender, :first_name, :last_name, :birth_date, :address, :phone_number, :email, :is_teacher, locality_attributes: [:name], classrooms_attributes: [:name])
     end
 end

@@ -14,36 +14,6 @@
     <%= person.last_name %>
   </p>
 
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Birthdate:</strong>
-    <%= person.birth_date %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Address:</strong>
-    <%= person.address %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Phonenumber:</strong>
-    <%= person.phone_number %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Email:</strong>
-    <%= person.email %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Isteacher:</strong>
-    <%= person.is_teacher %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Locality:</strong>
-    <%= person.locality_id %>
-  </p>
-
   <% if action_name != "show" %>
     <%= link_to "Show this person", person, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this person", edit_person_path(person), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

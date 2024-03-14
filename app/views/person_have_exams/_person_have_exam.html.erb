@@ -5,8 +5,8 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Person:</strong>
-    <%= person_have_exam.person_id %>
+    <strong class="block font-medium mb-1">Student's name:</strong>
+    <%= person_have_exam.person.first_name %>
   </p>
 
   <p class="my-5">
@@ -15,8 +15,8 @@
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this person have exam", person_have_exam, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this person have exam", edit_person_have_exam_path(person_have_exam), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Show this grade", person_have_exam, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this grade", edit_person_have_exam_path(person_have_exam), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
     <hr class="mt-6">
   <% end %>
 </div>

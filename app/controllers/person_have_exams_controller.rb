@@ -13,6 +13,8 @@ class PersonHaveExamsController < ApplicationController
   # GET /person_have_exams/new
   def new
     @person_have_exam = PersonHaveExam.new
+    @person_have_exam.build_person
+    @person_have_exam.person = Person.find(params[:person_id])
   end
 
   # GET /person_have_exams/1/edit
@@ -21,12 +23,16 @@ class PersonHaveExamsController < ApplicationController
 
   # POST /person_have_exams or /person_have_exams.json
   def create
-    @person_have_exam = PersonHaveExam.new(person_have_exam_params)
-
+    puts person_have_exam_params["person_attributes"]
+    @person_have_exam = PersonHaveExam.new # doing PersonHaveExam.new(person_have_exam_params) doesn't work, for some reasons...
+    @person_have_exam.person = Person.find(person_have_exam_params["person_attributes"]["id"])
+    @person_have_exam.exam_id = person_have_exam_params["exam_id"]
+    @person_have_exam.grade = person_have_exam_params["grade"]
+    
     respond_to do |format|
       if @person_have_exam.save
-        format.html { redirect_to person_have_exam_url(@person_have_exam), notice: "Person have exam was successfully created." }
-        format.json { render :show, status: :created, location: @person_have_exam }
+        format.html { redirect_to person_person_have_exam_url(@person_have_exam.person,@person_have_exam), notice: "Person have exam was successfully created." }
+        format.json { render :show, status: :created, location: @person_have_exam, person_id: @person_have_exam.person_id }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @person_have_exam.errors, status: :unprocessable_entity }
@@ -65,6 +71,6 @@ class PersonHaveExamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_have_exam_params
-      params.require(:person_have_exam).permit(:grade, :person_id, :exam_id)
+      params.require(:person_have_exam).permit(:id, :grade, :exam_id, :person_id, person_attributes: [ :id, :first_name])
     end
 end
