@@ -4,11 +4,37 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Person have exams</h1>
-    <%= link_to "New person have exam", new_person_have_exam_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl">Grades</h1>
+    <%= link_to "New grade", new_person_person_have_exam_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="person_have_exams" class="min-w-full">
-    <%= render @person_have_exams %>
+
+
+
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="bg-gray-200">
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Edit</th>
+          <th>Show</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @person_have_exams.each do |grade| %>
+          <tr class="<%= cycle('bg-gray-100', 'bg-gray-200') %>">
+            <td><%= grade.exam.subject.name %></td>
+            <td><%= grade.grade %></td>
+            <td  style="width: 1%;"><%= link_to image_tag("pen.png", width: 16), edit_person_person_have_exam_path(grade.person_id, grade) %></td>
+            <td  style="width: 1%;"><%= link_to image_tag("search.png", width: 16), person_person_have_exam_path(grade.person_id, grade) %></td>
+            <td  style="width: 1%;"> <%= button_to image_tag("bin.png", width: 16), person_person_have_exam_path(grade.person_id, grade), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    </div>
   </div>
 </div>
