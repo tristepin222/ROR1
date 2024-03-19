@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   resources :lessons
-  get 'people/:id/report_card/generate', to: 'report_card#generate'
-
   resources :person_evaluate_exams
   resources :person_belongs_to_classrooms
   resources :classrooms
   resources :exams
-  resources :subjects
+  resources :subjects do
+    member  do
+      post :archive
+    end
+  end
   resources :person_have_exams, path: 'grades', only: [:create, :update, :destroy, :edit, :new, :show]
 
   resources :students, controller: 'people', type: 'Student'
@@ -15,6 +17,9 @@ Rails.application.routes.draw do
   
   resources :people do
     resources :person_have_exams, path: 'grades'
+    member  do
+      get :archive, path: 'report_card/generat'
+    end
   end
 
   devise_for :people, path: 'auth', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret'}

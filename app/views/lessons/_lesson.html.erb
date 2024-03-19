@@ -5,13 +5,13 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">Person:</strong>
-    <%= lesson.person_id %>
+    <strong class="block font-medium mb-1">Teacher:</strong>
+    <%= lesson.person.first_name %>
   </p>
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Subject:</strong>
-    <%= lesson.subject_id %>
+    <%= lesson.subject.name %>
   </p>
 
   <% if action_name != "show" %>

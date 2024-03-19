@@ -1,12 +1,16 @@
-<div id="<%= dom_id subject %>">
+<div id="<%= dom_id subject %>" class="<%= 'bg-gray-300' if subject.archived %>">
+
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= subject.name %>
   </p>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this subject", subject, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "Edit this subject", edit_subject_path(subject), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <% if !subject.archived  %>
+      <%= link_to "Show this subject", subject, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= link_to "Edit this subject", edit_subject_path(subject), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+      <%= button_to  "Archive", archive_subject_path(subject), {:method => :post, :class => "rounded-lg py-3 ml-2 px-5 bg-gray-100  font-medium", :form_class => "inline-block"} %>
+    <% end %>
     <hr class="mt-6">
   <% end %>
 </div>
