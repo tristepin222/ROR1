@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_07_103047) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_14_095003) do
   create_table "classrooms", force: :cascade do |t|
     t.string "name"
     t.integer "number"
@@ -46,13 +46,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_103047) do
     t.string "phone_number"
     t.string "email"
     t.boolean "is_teacher"
+    t.integer "locality_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "locality_id"
+    t.string "type"
     t.index ["email"], name: "index_people_on_email", unique: true
     t.index ["locality_id"], name: "index_people_on_locality_id"
     t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
@@ -95,6 +96,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_07_103047) do
     t.integer "subject_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "type"
     t.index ["person_id"], name: "index_person_learn_subjects_on_person_id"
     t.index ["subject_id"], name: "index_person_learn_subjects_on_subject_id"
   end
