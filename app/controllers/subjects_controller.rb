@@ -3,7 +3,11 @@ class SubjectsController < ApplicationController
   before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /subjects or /subjects.json
   def index
-    @subjects = Subject.all
+    if current_person&.teacher?
+      @subject = current_person.subjects
+    else
+      @subjects = Subject.all
+    end
   end
 
   # GET /subjects/1 or /subjects/1.json
