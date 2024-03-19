@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   resources :subjects
   resources :person_have_exams, path: 'grades', only: [:create, :update, :destroy, :edit, :new, :show]
 
-
+  resources :students, controller: 'people', type: 'Student'
+  resources :teachers, controller: 'people', type: 'Teacher'
+  resources :deans, controller: 'people', type: 'Dean'
+  
   resources :people do
     resources :person_have_exams, path: 'grades'
   end
@@ -23,5 +26,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  root "people#index"
+  root "welcome#index"
 end
