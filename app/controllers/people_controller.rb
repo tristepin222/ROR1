@@ -23,7 +23,7 @@ class PeopleController < ApplicationController
 
   # POST /people or /people.json
   def create
-    if person_params["is_teacher"] = 0
+    if person_params["is_teacher"] == 0
       @person = Student.new(person_params)
     else
       @person = Teacher.new(person_params)
