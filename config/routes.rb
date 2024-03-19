@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'report_card/generate'
 
   resources :person_learn_subjects
   resources :person_teach_subjects
