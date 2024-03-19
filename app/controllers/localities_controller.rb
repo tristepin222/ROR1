@@ -1,6 +1,6 @@
 class LocalitiesController < ApplicationController
   before_action :set_locality, only: %i[ show edit update destroy ]
-
+  before_action :authorize_dean_or_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /localities or /localities.json
   def index
     @localities = Locality.all

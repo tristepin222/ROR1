@@ -1,6 +1,6 @@
 class PersonHaveExamsController < ApplicationController
   before_action :set_person_have_exam, only: %i[ show edit update destroy ]
-  before_action :authorize_teacher, only: [:new, :edit, :create, :destroy, :update]
+  before_action :authorize_dean_or_teacher, only: [:new, :edit, :create, :destroy, :update]
 
   # grades controller
 

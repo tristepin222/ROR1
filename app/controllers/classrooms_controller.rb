@@ -1,6 +1,6 @@
 class ClassroomsController < ApplicationController
   before_action :set_classroom, only: %i[ show edit update destroy ]
-  before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
+  before_action :authorize_dean_or_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /classrooms or /classrooms.json
   def index
     if current_person&.teacher?
