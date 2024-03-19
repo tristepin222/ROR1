@@ -18,9 +18,11 @@
           <tr class="bg-gray-200">
           <th>Subject</th>
           <th>Score</th>
-          <th>Edit</th>
           <th>Show</th>
-          <th>Delete</th>
+          <% if current_person&.teacher? %>
+            <th>Edit</th>
+            <th>Delete</th>
+          <% end %>
         </tr>
       </thead>
       <tbody>
@@ -28,9 +30,11 @@
           <tr class="<%= cycle('bg-gray-100', 'bg-gray-200') %>">
             <td><%= grade.exam.subject.name %></td>
             <td><%= grade.grade %></td>
-            <td  style="width: 1%;"><%= link_to image_tag("pen.png", width: 16), edit_person_person_have_exam_path(grade.person_id, grade) %></td>
             <td  style="width: 1%;"><%= link_to image_tag("search.png", width: 16), person_person_have_exam_path(grade.person_id, grade) %></td>
-            <td  style="width: 1%;"> <%= button_to image_tag("bin.png", width: 16), person_person_have_exam_path(grade.person_id, grade), method: :delete %></td>
+            <% if current_person&.teacher? %>
+              <td  style="width: 1%;"><%= link_to image_tag("pen.png", width: 16), edit_person_person_have_exam_path(grade.person_id, grade) %></td>
+              <td  style="width: 1%;"> <%= button_to image_tag("bin.png", width: 16), person_person_have_exam_path(grade.person_id, grade), method: :delete %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
