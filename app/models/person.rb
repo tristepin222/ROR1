@@ -5,7 +5,7 @@ class Person < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :locality, optional: true
-  has_many :person_belongs_to_classrooms
+  has_many :person_belongs_to_classrooms, autosave: true
   has_many :person_have_exams
   has_many :person_evaluate_exams
   has_many :classrooms, through: :person_belongs_to_classrooms, autosave: true
@@ -15,4 +15,11 @@ class Person < ApplicationRecord
   has_many :exams, through: :person_evaluate_exams
   accepts_nested_attributes_for :locality
   accepts_nested_attributes_for :classrooms
+
+  def teacher?
+    self.type == 'Teacher'
+  end
+  def dean?
+    self.type == 'Dean'
+  end
 end
