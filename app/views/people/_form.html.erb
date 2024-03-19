@@ -51,20 +51,30 @@
     <%= form.check_box :is_teacher, class: "block mt-2 h-5 w-5" %>
   </div>
 
-    <%= form.fields_for :locality do |locality_form| %>
-        <div class="my-5">
-          <%= locality_form.label :city %>
-          <%= locality_form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>
-        </div>
-    <% end %>
+  <%= form.fields_for :locality do |locality_form| %>
+    <div class="my-5">
+      <%= locality_form.label :city %>
+      <%= locality_form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>
+    </div>
+  <% end %>
 
-  <%= form.fields_for :classrooms do |classrooms_form| %>
-        <div class="my-5">
-          <%= classrooms_form.label :classroom %>
-          <%= classrooms_form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"%>
-        </div>
-    <% end %>
+  <%= form.label :classroom %>
+  <%= form.fields_for :classrooms do |classroom_form| %>
+    <%= classroom_form.collection_select :id, Classroom.order(:name), :id, :name, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
+  <% end %>
+  <div class="field">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, autocomplete: "new-password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
 
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <br>
   <div class="inline">
     <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
