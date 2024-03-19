@@ -1,5 +1,8 @@
 class PersonHaveExamsController < ApplicationController
   before_action :set_person_have_exam, only: %i[ show edit update destroy ]
+  before_action :authorize_teacher, only: [:new, :edit, :create, :destroy, :update]
+
+  # grades controller
 
   # GET /person_have_exams or /person_have_exams.json
   def index
@@ -23,7 +26,6 @@ class PersonHaveExamsController < ApplicationController
 
   # POST /person_have_exams or /person_have_exams.json
   def create
-    puts person_have_exam_params["person_attributes"]
     @person_have_exam = PersonHaveExam.new # doing PersonHaveExam.new(person_have_exam_params) doesn't work, for some reasons...
     @person_have_exam.person = Person.find(person_have_exam_params["person_attributes"]["id"])
     @person_have_exam.exam_id = person_have_exam_params["exam_id"]

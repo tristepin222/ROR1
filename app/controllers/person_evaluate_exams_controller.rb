@@ -1,6 +1,6 @@
 class PersonEvaluateExamsController < ApplicationController
   before_action :set_person_evaluate_exam, only: %i[ show edit update destroy ]
-
+  before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /person_evaluate_exams or /person_evaluate_exams.json
   def index
     @person_evaluate_exams = PersonEvaluateExam.all

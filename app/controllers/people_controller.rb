@@ -1,9 +1,9 @@
 class PeopleController < ApplicationController
   before_action :authenticate_person!, :set_person, only: %i[ show edit update destroy ]
-
+  before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /people or /people.json
   def index
-    puts current_person.first_name
+    puts current_person
     @people = Person.all
   end
 
@@ -14,8 +14,8 @@ class PeopleController < ApplicationController
   # GET /people/new
   def new
     @person = Person.new
-    @person.build_locality
-    @person.classrooms.build
+    @person.build_locality # build if belongs_to
+    @person.classrooms.build #build if has_many
   end
 
   # GET /people/1/edit
@@ -24,7 +24,13 @@ class PeopleController < ApplicationController
 
   # POST /people or /people.json
   def create
-    @person = Person.new(person_params)
+    if person_params["is_teacher"] = 0
+      @person = Student.new(person_params)
+    else
+      @person = Teacher.new(person_params)
+    end
+
+    puts @person
     respond_to do |format|
       if @person.save
         format.html { redirect_to person_url(@person), notice: "Person was successfully created." }
@@ -67,6 +73,6 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:gender, :first_name, :last_name, :birth_date, :address, :phone_number, :email, :is_teacher, locality_attributes: [:name], classrooms_attributes: [:name])
+      params.require(:person).permit(:gender, :first_name, :last_name, :birth_date, :address, :phone_number, :email, :is_teacher, :password, :password_confirmation, locality_attributes: [:name], classrooms_attributes: [:name])
     end
 end

@@ -1,6 +1,6 @@
 class PersonBelongsToClassroomsController < ApplicationController
   before_action :set_person_belongs_to_classroom, only: %i[ show edit update destroy ]
-
+  before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /person_belongs_to_classrooms or /person_belongs_to_classrooms.json
   def index
     @person_belongs_to_classrooms = PersonBelongsToClassroom.all

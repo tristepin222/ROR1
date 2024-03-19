@@ -1,6 +1,6 @@
 class PersonTeachSubjectsController < ApplicationController
   before_action :set_person_teach_subject, only: %i[ show edit update destroy ]
-
+  before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /person_teach_subjects or /person_teach_subjects.json
   def index
     @person_teach_subjects = PersonTeachSubject.all
