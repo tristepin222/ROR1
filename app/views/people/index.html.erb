@@ -9,6 +9,6 @@
   </div>
 
   <div id="people" class="min-w-full">
-    <%= render @people %>
+    <%= render partial: "people/person", collection: @people, as: :person %>
   </div>
 </div>
