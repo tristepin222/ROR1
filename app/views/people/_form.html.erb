@@ -62,7 +62,7 @@
   <%= form.fields_for :classrooms do |classroom_form| %>
     <%= classroom_form.collection_select :id, Classroom.order(:name), :id, :name, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
   <% end %>
-  <div class="field">
+  <div class="field my-5">
     <%= form.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -70,7 +70,7 @@
     <%= form.password_field :password, autocomplete: "new-password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
-  <div class="field">
+  <div class="field my-5">
     <%= form.label :password_confirmation %><br />
     <%= form.password_field :password_confirmation, autocomplete: "new-password", class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
