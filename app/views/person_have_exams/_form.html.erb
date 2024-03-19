@@ -25,7 +25,7 @@
 
   <div class="my-5">
     <%= form.label :exam %>
-    <%= form.collection_select :exam_id, Exam.order(:title), :id, :title, {}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
+    <%= form.collection_select :exam_id, current_person.exams, :id, :title, {}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
   </div>
 
   <div class="inline">
