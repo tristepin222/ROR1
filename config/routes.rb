@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
+  resources :lessons
   get 'people/:id/report_card/generate', to: 'report_card#generate'
 
-  resources :person_learn_subjects
-  resources :person_teach_subjects
   resources :person_evaluate_exams
   resources :person_belongs_to_classrooms
   resources :classrooms

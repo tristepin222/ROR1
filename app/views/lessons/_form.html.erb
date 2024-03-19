@@ -1,10 +1,10 @@
-<%= form_with(model: person_teach_subject, class: "contents") do |form| %>
-  <% if person_teach_subject.errors.any? %>
+<%= form_with(model: lesson, class: "contents") do |form| %>
+  <% if lesson.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(person_teach_subject.errors.count, "error") %> prohibited this person_teach_subject from being saved:</h2>
+      <h2><%= pluralize(lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
 
       <ul>
-        <% person_teach_subject.errors.each do |error| %>
+        <% lesson.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :teach_date %>
-    <%= form.date_field :teach_date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :date %>
+    <%= form.datetime_field :date, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">

@@ -12,8 +12,7 @@
 PersonBelongsToClassroom.destroy_all
 PersonEvaluateExam.destroy_all
 PersonHaveExam.destroy_all
-PersonLearnSubject.destroy_all
-PersonTeachSubject.destroy_all
+Lesson.destroy_all
 
 # Clear records in tables without foreign key constraints
 Classroom.destroy_all
@@ -58,11 +57,9 @@ person_classroom_associations = PersonBelongsToClassroom.create([
   { person: people.third, classroom: classrooms.third, start_date: Date.new(2024, 1, 1) }
 ])
 
-person_teach_subjects = PersonTeachSubject.create([
-  { teach_date: Date.new(2024, 3, 14), person: people.first, subject: subjects.first }
-])
-person_learn_subjects = PersonLearnSubject.create([
-  { learn_date: Date.new(2024, 3, 14), person: people.second, subject: subjects.first }
+person_teach_subjects = Lesson.create([
+  { date: Date.new(2024, 3, 14), person: people.first, subject: subjects.first },
+  { date: Date.new(2024, 3, 14), person: people.second, subject: subjects.first }
 ])
 
 exams = Exam.create([
