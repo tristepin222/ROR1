@@ -1,4 +1,24 @@
-<div>
-  <h1 class="font-bold text-4xl">ReportCard#generate</h1>
-  <p>Find me in app/views/report_card/generate.html.erb</p>
-</div>
+<div id="person_have_exams" class="min-w-full">
+
+
+
+    <div class="overflow-x-auto">
+      <table class="table-auto w-full">
+        <thead>
+          <tr class="bg-gray-200">
+          <th>Subject</th>
+          <th>Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @person_have_exams.each do |grade| %>
+          <tr class="<%= cycle('bg-gray-100', 'bg-gray-200') %>">
+            <td><%= grade.exam.subject.name %></td>
+            <td><%= grade.grade %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+      <p>Total: <%= @person_have_exams.sum { |grade| grade.grade} / @person_have_exams.count %></p>
+    </div>
+  </div>
