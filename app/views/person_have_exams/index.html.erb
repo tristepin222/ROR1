@@ -3,6 +3,11 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
+  <% if current_person&.dean? %>
+    <div class="flex justify-end items-center">
+      <%= link_to "Generate grade report", "report_card/generate", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+  <% end %>
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-4xl">Grades</h1>
     <%= link_to "New grade", new_person_person_have_exam_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
