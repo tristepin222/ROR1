@@ -9,7 +9,7 @@ class CreatePeople < ActiveRecord::Migration[7.1]
       t.string :phone_number
       t.string :email
       t.boolean :is_teacher
-      t.references :locality, null: false, foreign_key: true
+      t.references :locality, null: true, foreign_key: true
 
       t.timestamps
     end
