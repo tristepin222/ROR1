@@ -61,11 +61,24 @@ person_classroom_associations = PersonBelongsToClassroom.create([
 person_teach_subjects = PersonTeachSubject.create([
   { teach_date: Date.new(2024, 3, 14), person: people.first, subject: subjects.first }
 ])
+person_learn_subjects = PersonLearnSubject.create([
+  { learn_date: Date.new(2024, 3, 14), person: people.second, subject: subjects.first }
+])
 
+exams = Exam.create([
+  { date: Date.new(2024, 3, 14), title: 'Midterm Exam', coefficient: 0.5, subject: subjects.first },
+  { date: Date.new(2024, 3, 14), title: 'Terminal Exam', coefficient: 1, subject: subjects.second }
+])
+
+person_evaluate_exams = PersonEvaluateExam.create([
+  { exam_date: Date.new(2024, 3, 14), person: people.first, exam: exams.first }
+])
+
+person_have_exams = PersonHaveExam.create([
+  { grade: 6, person: people.second, exam: exams.first }
+])
 
 # Create exams
-exams = Exam.create([
-  { date: Date.new(2024, 3, 14), title: 'Midterm Exam', coefficient: 0.5, subject: subjects.first }
-])
+
 
 # Other associations and seeds as needed
