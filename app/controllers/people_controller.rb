@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_action :authenticate_person!, :set_person, only: %i[ show edit update destroy ]
-  before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
+  before_action :authorize_dean_or_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /people or /people.json
   def index
     puts current_person
