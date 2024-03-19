@@ -26,7 +26,7 @@ class PersonHaveExamsController < ApplicationController
 
   # POST /person_have_exams or /person_have_exams.json
   def create
-    @person_have_exam = PersonHaveExam.new # doing PersonHaveExam.new(person_have_exam_params) doesn't work, for some reasons...
+    @person_have_exam = PersonHaveExam.new # doing PersonHaveExam.new(person_have_exam_params) doesn't work, because of conflicting IDs
     @person_have_exam.person = Person.find(person_have_exam_params["person_attributes"]["id"])
     @person_have_exam.exam_id = person_have_exam_params["exam_id"]
     @person_have_exam.grade = person_have_exam_params["grade"]
