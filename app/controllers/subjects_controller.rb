@@ -4,7 +4,7 @@ class SubjectsController < ApplicationController
   # GET /subjects or /subjects.json
   def index
     if current_person&.teacher?
-      @subject = current_person.subjects
+      @subjects = current_person.subjects
     else
       @subjects = Subject.all
     end

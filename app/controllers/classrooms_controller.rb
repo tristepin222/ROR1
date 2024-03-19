@@ -3,7 +3,11 @@ class ClassroomsController < ApplicationController
   before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /classrooms or /classrooms.json
   def index
-    @classrooms = Classroom.all
+    if current_person&.teacher?
+      @classrooms = current_person.classrooms
+    else
+      @classrooms = Classroom.all
+    end
   end
 
   # GET /classrooms/1 or /classrooms/1.json

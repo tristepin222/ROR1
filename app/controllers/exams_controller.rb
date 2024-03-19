@@ -3,7 +3,11 @@ class ExamsController < ApplicationController
   before_action :authorize_teacher, only: [:new, :create, :destroy, :update, :index]
   # GET /exams or /exams.json
   def index
-    @exams = Exam.all
+    if current_person&.teacher?
+      @exams = current_person.exams
+    else
+      @exams = Exam.all
+    end
   end
 
   # GET /exams/1 or /exams/1.json
