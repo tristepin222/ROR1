@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  resources :lessons
-  resources :person_evaluate_exams
-  resources :person_belongs_to_classrooms
-  resources :classrooms
-  resources :exams
-  resources :subjects do
+  resources :lessons do
     member  do
       post :archive
     end
   end
+  
+  resources :person_evaluate_exams
+  resources :person_belongs_to_classrooms
+  resources :classrooms
+  resources :exams
+  resources :subjects
   resources :person_have_exams, path: 'grades', only: [:create, :update, :destroy, :edit, :new, :show]
 
   resources :students, controller: 'people', type: 'Student'
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   resources :people do
     resources :person_have_exams, path: 'grades'
     member  do
-      get :archive, path: 'report_card/generat'
+      get :archive, path: 'report_card/generate'
     end
   end
 
