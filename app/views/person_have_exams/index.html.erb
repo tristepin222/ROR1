@@ -31,7 +31,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @person_have_exams.each do |grade| %>
+        <% @person_have_exams&.each do |grade| %>
           <tr class="<%= cycle('bg-gray-100', 'bg-gray-200') %>">
             <td><%= grade.exam.subject.name %></td>
             <td><%= grade.grade %></td>
