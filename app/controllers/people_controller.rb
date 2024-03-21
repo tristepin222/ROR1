@@ -71,10 +71,6 @@ class PeopleController < ApplicationController
     end
   end
 
-  def generate_report_card
-    render :report_card
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
@@ -83,6 +79,15 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
+
+      if params.has_key? :teacher
+        params[:person] = params.delete :teacher
+      elsif params.has_key? :dean
+        params[:person] = params.delete :dean
+      elsif params.has_key? :student
+        params[:person] = params.delete :student
+      end
+
       params.require(:person).permit(:gender, :first_name, :last_name, :birth_date, :address, :phone_number, :email, :is_teacher, :password, :password_confirmation, locality_attributes: [:name], classrooms_attributes: [:name])
     end
 end
