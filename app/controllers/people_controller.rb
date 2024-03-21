@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
   before_action :authenticate_person!, :set_person, only: %i[ show edit update destroy ]
   before_action :authorize_dean_or_teacher, only: [:new, :create, :destroy, :update, :index]
+  before_action :authorize_on_edit, only: [:edit]
   # GET /people or /people.json
   def index
     @people = Person.all
@@ -61,6 +62,12 @@ class PeopleController < ApplicationController
     respond_to do |format|
       format.html { redirect_to people_url, notice: "Person was successfully destroyed." }
       format.json { head :no_content }
+    end
+  end
+
+  def authorize_on_edit
+    if @person != current_person && current_person.student?
+      route_back
     end
   end
 
