@@ -57,10 +57,11 @@ person_classroom_associations = PersonBelongsToClassroom.create([
   { person: people.third, classroom: classrooms.third, start_date: Date.new(2024, 1, 1) }
 ])
 
-person_teach_subjects = Lesson.create([
-  { date: Date.new(2024, 3, 14), person: people.first, subject: subjects.first },
-  { date: Date.new(2024, 3, 14), person: people.second, subject: subjects.first }
+lessons = Lesson.create([
+  { date: Date.new(2026, 3, 14), person: people.first, subject: subjects.first },
+  { date: Date.new(2026, 3, 14), person: people.second, subject: subjects.first }
 ])
+
 
 exams = Exam.create([
   { date: Date.new(2024, 3, 14), title: 'Midterm Exam', coefficient: 0.5, subject: subjects.first },
