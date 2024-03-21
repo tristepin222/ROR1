@@ -3,40 +3,47 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <% if current_person&.dean? %>
-    <div class="flex justify-end items-center">
-      <%= link_to "Generate grade report", "report_card/generate", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
-    </div>
-  <% end %>
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Grades</h1>
-    <%= link_to "New grade", new_person_person_have_exam_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  <div class="grid grid-cols-5 gap-1">
+    <h1 class="font-bold text-4xl m-100">Grades</h1>
+    <% if current_person&.dean? %>
+      <%= link_to "Generate grade report", "report_card/generate", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium text-center col-start-4" %>
+    <% end %>
+    <%= link_to "New grade", new_person_person_have_exam_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium text-center col-start-5" %>
   </div>
 
   <div id="person_have_exams" class="min-w-full">
 
 
+    <% grades_by_year = Hash.new { |hash, key| hash[key] = [] } %>
+    <% @person_have_exams&.each do |grade| %>
+      <% year = grade.exam.date.year %>
+      <% grades_by_year[year] << grade %>
+    <% end %>
 
+    <% sorted_grades_by_year = grades_by_year.sort_by { |year, _| year }.reverse %>
+
+    <% sorted_grades_by_year.each do |year, grades| %>
+    <h2>Year: <%= year %>-<%= year + 1 %></h2>
     <div class="overflow-x-auto">
       <table class="table-auto w-full">
         <thead>
-          <tr class="bg-gray-200">
+          <tr class="bg-gray-400">
           <th>Subject</th>
           <th>Score</th>
           <th>Show</th>
-          <% if current_person&.teacher? %>
+          <% if current_person&.teacher? || current_person&.dean? %>
             <th>Edit</th>
             <th>Delete</th>
           <% end %>
         </tr>
       </thead>
       <tbody>
-        <% @person_have_exams&.each do |grade| %>
+        <% grades.each do |grade| %>
           <tr class="<%= cycle('bg-gray-100', 'bg-gray-200') %>">
             <td><%= grade.exam.subject.name %></td>
             <td><%= grade.grade %></td>
             <td  style="width: 1%;"><%= link_to image_tag("search.png", width: 16), person_person_have_exam_path(grade.person_id, grade) %></td>
-            <% if current_person&.teacher? %>
+            <% if current_person&.teacher? || current_person&.dean? %>
               <td  style="width: 1%;"><%= link_to image_tag("pen.png", width: 16), edit_person_person_have_exam_path(grade.person_id, grade) %></td>
               <td  style="width: 1%;"> <%= button_to image_tag("bin.png", width: 16), person_person_have_exam_path(grade.person_id, grade), method: :delete %></td>
             <% end %>
@@ -45,5 +52,6 @@
       </tbody>
       </table>
     </div>
+    <% end %>
   </div>
 </div>
