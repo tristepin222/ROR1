@@ -51,12 +51,6 @@ class SubjectsController < ApplicationController
     end
   end
 
-  def archive
-    @subject = Subject.find(params[:id])
-    @subject.update(archived: true)
-    redirect_back fallback_location: root_path
-  end
-
   # DELETE /subjects/1 or /subjects/1.json
   def destroy
     @subject.destroy!

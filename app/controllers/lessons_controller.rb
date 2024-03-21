@@ -47,6 +47,12 @@ class LessonsController < ApplicationController
     end
   end
 
+  def archive
+    @lesson = Lesson.find(params[:id])
+    @lesson.update(date: Date.yesterday)
+    redirect_back fallback_location: root_path
+  end
+
   # DELETE /lessons/1 or /lessons/1.json
   def destroy
     @lesson.destroy!
