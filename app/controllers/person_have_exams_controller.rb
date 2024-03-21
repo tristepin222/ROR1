@@ -6,7 +6,11 @@ class PersonHaveExamsController < ApplicationController
 
   # GET /person_have_exams or /person_have_exams.json
   def index
-    @person_have_exams = PersonHaveExam.all
+    @person_have_exams = PersonHaveExam.where(person_id: params[:person_id])
+    if @person_have_exams.first.nil?
+      flash[:alert] = "Only students can have grades"
+      redirect_back fallback_location: root_path
+    end
   end
 
   # GET /person_have_exams/1 or /person_have_exams/1.json
