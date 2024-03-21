@@ -24,4 +24,7 @@ class Person < ApplicationRecord
   def dean?
     self.type == 'Dean'
   end
+  def student?
+    self.type == 'Student'
+  end
 end
