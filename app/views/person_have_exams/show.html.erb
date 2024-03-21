@@ -6,10 +6,10 @@
 
     <%= render @person_have_exam %>
 
-    <%= link_to "Edit this grade", edit_person_have_exam_path(@person_have_exam), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this grade", edit_person_person_have_exam_path(@person_have_exam), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to "Destroy this grade", person_have_exam_path(@person_have_exam), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to "Destroy this grade", person_person_have_exam_path(@person_have_exam), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to "Back to grades", person_person_have_exams_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Back to grades", person_person_have_exams_path(@person_have_exam.person), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
