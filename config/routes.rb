@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :people do
     resources :person_have_exams, path: 'grades'
     member  do
-      get :archive, path: 'report_card/generate'
+      get :generate_report_card, path: 'report_card/generate'
     end
   end
 
