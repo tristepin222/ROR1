@@ -72,7 +72,8 @@ person_evaluate_exams = PersonEvaluateExam.create([
 ])
 
 person_have_exams = PersonHaveExam.create([
-  { grade: 6, person: people.second, exam: exams.first }
+  { grade: 6, person: people.second, exam: exams.first },
+  { grade: 6, person: people.second, exam: exams.second }
 ])
 
 # Create exams
