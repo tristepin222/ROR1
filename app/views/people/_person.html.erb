@@ -10,9 +10,15 @@
   </p>
 
   <p class="my-5">
-    <strong class="block font-medium mb-1">last_name:</strong>
+    <strong class="block font-medium mb-1">Lastname:</strong>
     <%= person.last_name %>
   </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Class rooms:</strong>
+    <%= person.classrooms.first.name %>
+  </p>
+
 
   <% if action_name != "show" %>
     <%= link_to "Show this person", person, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>

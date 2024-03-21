@@ -47,8 +47,8 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :is_teacher %>
-    <%= form.check_box :is_teacher, class: "block mt-2 h-5 w-5" %>
+    <%= form.label :Type %>
+    <%= form.text_field :type, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <%= form.fields_for :locality do |locality_form| %>
@@ -59,9 +59,8 @@
   <% end %>
 
   <%= form.label :classroom %>
-  <%= form.fields_for :classrooms do |classroom_form| %>
-    <%= classroom_form.collection_select :id, Classroom.order(:name), :id, :name, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
-  <% end %>
+  <%= form.collection_select :id, Classroom.order(:name), :id, :name, {}, { class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" } %>
+  
   <div class="field my-5">
     <%= form.label :password %>
     <% if @minimum_password_length %>
