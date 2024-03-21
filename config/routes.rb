@@ -17,9 +17,9 @@ Rails.application.routes.draw do
   resources :deans, controller: 'people', type: 'Dean'
   
   resources :people do
-    resources :person_have_exams, path: 'grades'
+    resources :person_have_exams, path: 'grades' # /people/:person_id/grades/:id(.:format)
     member  do
-      get :generate_report_card, path: 'report_card/generate'
+      get :generate, to: 'report_card#generate', path: 'report_card/generate' # /people/:id/report_card/generate(.:format)
     end
   end
 
