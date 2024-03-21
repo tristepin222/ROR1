@@ -18,7 +18,7 @@
 
   <div class="my-5">
     <%= form.label :teacher %>
-    <%= form.collection_select :person_id, Person.where(:type => "Teacher"), :id, :first_name, {}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
+    <%= form.collection_select :person_id, Person.where(:type => "Teacher").or(Person.where(:type => "Dean")), :id, :first_name, {}, {class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full"} %>
   </div>
     <div class="my-5">
     <%= form.label :subject %>
