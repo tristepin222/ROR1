@@ -29,6 +29,11 @@
   </div>
 
   <div class="inline">
-    <%= form.submit "Create grade", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <% if action_name == "edit" %>
+      <% submit_name = "Update" %>
+    <% else %>
+      <% submit_name = "Create" %>
+    <% end %>
+    <%= form.submit submit_name + " grade", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
 <% end %>
