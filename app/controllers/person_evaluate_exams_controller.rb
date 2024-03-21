@@ -13,6 +13,7 @@ class PersonEvaluateExamsController < ApplicationController
   # GET /person_evaluate_exams/new
   def new
     @person_evaluate_exam = PersonEvaluateExam.new
+    @person_evaluate_exam.build_exam
   end
 
   # GET /person_evaluate_exams/1/edit
@@ -21,11 +22,14 @@ class PersonEvaluateExamsController < ApplicationController
 
   # POST /person_evaluate_exams or /person_evaluate_exams.json
   def create
-    @person_evaluate_exam = PersonEvaluateExam.new(person_evaluate_exam_params)
+    @person_evaluate_exam = PersonEvaluateExam.new
+    puts person_evaluate_exam_params["exam_attributes"]["id"]
+    @person_evaluate_exam.exam = Exam.new(person_evaluate_exam_params["exam_attributes"])
+    @person_evaluate_exam.person_id = person_evaluate_exam_params["person_id"]
 
     respond_to do |format|
       if @person_evaluate_exam.save
-        format.html { redirect_to person_evaluate_exam_url(@person_evaluate_exam), notice: "Person evaluate exam was successfully created." }
+        format.html { redirect_to exams_path, notice: "Person evaluate exam was successfully created." }
         format.json { render :show, status: :created, location: @person_evaluate_exam }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +42,7 @@ class PersonEvaluateExamsController < ApplicationController
   def update
     respond_to do |format|
       if @person_evaluate_exam.update(person_evaluate_exam_params)
-        format.html { redirect_to person_evaluate_exam_url(@person_evaluate_exam), notice: "Person evaluate exam was successfully updated." }
+        format.html { redirect_to exams_path, notice: "Person evaluate exam was successfully updated." }
         format.json { render :show, status: :ok, location: @person_evaluate_exam }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -65,6 +69,6 @@ class PersonEvaluateExamsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_evaluate_exam_params
-      params.require(:person_evaluate_exam).permit(:exam_date, :person_id, :exam_id)
+      params.require(:person_evaluate_exam).permit(:id, :grade, :exam_id, :person_id, exam_attributes: [:id, :subject_id, :date, :title, :coefficient])
     end
 end
