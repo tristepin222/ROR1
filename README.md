@@ -55,9 +55,6 @@ Each time you make a change in the css, you'll have to build it again, if you do
 
 With visual studio Code, you only need to run the commands `ruby bin/rails server` or `rails server`., to get the server running.
 
-## Directory tree
-    ROR1
-
 ## Collaborate
 
 If you wish to collaborate, simply clone the repo, create a branch with the feature you want to fix, or add.
@@ -65,6 +62,10 @@ If you wish to collaborate, simply clone the repo, create a branch with the feat
 When you're finish with it, create a pull request, we will review your code, comment it, and it will be merged once it passes our requirements.
 
 For more info please check the wiki.
+
+## documentation 
+
+you can find everything about the project's doc, under the `doc` folder
 
 ## License
 
