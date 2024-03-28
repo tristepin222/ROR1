@@ -71,6 +71,15 @@ class PeopleController < ApplicationController
     end
   end
 
+  # PATCH/PUT /people/1 or /people/1.json
+  def promote
+    @student = Student.find(params[:student_id])
+    @person_belongs_to_classroom = PersonBelongsToClassroom.new(person: @student, classroom: @student.classrooms.first, start_date: Date.today, end_date: Date.today.year+1 )
+    @person_belongs_to_classroom.save
+
+    redirect_back fallback_location: root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_person
