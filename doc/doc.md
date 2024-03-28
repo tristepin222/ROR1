@@ -1,5 +1,11 @@
 # Student Grade Management System
 
+28.03.2024
+
+## Authors
+
+Jessy Borcard
+
 ## Overview
 
 The Student Grade Management System is a web application built using Ruby on Rails that allows teachers and administrators to efficiently manage and track student grades. The system provides functionalities for creating and managing classes, subjects, exams, and students' grades. It aims to streamline the grading process, improve communication between teachers and students, and provide insights into student performance.
