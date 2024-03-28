@@ -13,6 +13,9 @@
     <%= link_to "Back to people", people_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <% if @person.student? %>
       <%= link_to "Show Grades", person_person_have_exams_path(@person), class: "ml-2 rounded-lg py-3 px-5 bg-[#22c55e] inline-block font-medium" %>
+      <% if current_person&.teacher? || current_person&.dean? %>
+        <%= link_to "Promote student", student_promote_path(@person), class: "ml-2 rounded-lg py-3 px-5 bg-[#22c55e] inline-block font-medium" %>
+      <% end %>
     <% end %>
   </div>
 </div>
