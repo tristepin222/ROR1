@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :subjects
   resources :person_have_exams, path: 'grades', only: [:create, :update, :destroy, :edit, :new, :show]
 
-  resources :students, controller: 'people', type: 'Student'
+  resources :students, controller: 'people', type: 'Student' do
+    get :promote, path: 'promote'
+  end
   resources :teachers, controller: 'people', type: 'Teacher'
   resources :deans, controller: 'people', type: 'Dean'
   
