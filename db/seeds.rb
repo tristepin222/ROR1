@@ -47,14 +47,21 @@ classrooms = Classroom.create([
 people = Person.create([
   { gender: 'Male', first_name: 'John', last_name: 'Doe', birth_date: Date.new(1980, 1, 1), address: '123 Main St', password: "12341234", password_confirmation: "12341234", phone_number: '123-456-7890', email: 'john@example.com', is_teacher: true, locality: localities.first, type: 'Teacher' },
   { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane@example.com', is_teacher: false, locality: localities.second, type: 'Student' },
-  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane2@example.com', is_teacher: false, locality: localities.third, type: 'Dean' }
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane2@example.com', is_teacher: false, locality: localities.second, type: 'Student' },
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane3@example.com', is_teacher: false, locality: localities.second, type: 'Student' },
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane4@example.com', is_teacher: false, locality: localities.third, type: 'Dean' }
 ])
 
 # Assign people to classrooms
 person_classroom_associations = PersonBelongsToClassroom.create([
+  { person: people.first, classroom: classrooms.first, start_date: Date.new(2021, 1, 1) },
+  { person: people.first, classroom: classrooms.first, start_date: Date.new(2022, 1, 1) },
+  { person: people.first, classroom: classrooms.first, start_date: Date.new(2023, 1, 1) },
   { person: people.first, classroom: classrooms.first, start_date: Date.new(2024, 1, 1) },
   { person: people.second, classroom: classrooms.second, start_date: Date.new(2024, 1, 1) },
-  { person: people.third, classroom: classrooms.third, start_date: Date.new(2024, 1, 1) }
+  { person: people.third, classroom: classrooms.first, start_date: Date.new(2024, 1, 1) },
+  { person: people.fourth, classroom: classrooms.first, start_date: Date.new(2024, 1, 1) },
+  { person: people.fifth, classroom: classrooms.third, start_date: Date.new(2024, 1, 1) },
 ])
 
 lessons = Lesson.create([
@@ -64,12 +71,12 @@ lessons = Lesson.create([
 
 
 exams = Exam.create([
-  { date: Date.new(2024, 3, 14), title: 'Midterm Exam', coefficient: 0.5, subject: subjects.first },
-  { date: Date.new(2024, 3, 14), title: 'Terminal Exam', coefficient: 1, subject: subjects.second }
+  { date: Date.new(2027, 3, 14), title: 'Midterm Exam', coefficient: 0.5, subject: subjects.first },
+  { date: Date.new(2027, 3, 14), title: 'Terminal Exam', coefficient: 1, subject: subjects.second }
 ])
 
 person_evaluate_exams = PersonEvaluateExam.create([
-  { exam_date: Date.new(2024, 3, 14), person: people.first, exam: exams.first }
+  { exam_date: Date.new(2027, 3, 14), person: people.first, exam: exams.first }
 ])
 
 person_have_exams = PersonHaveExam.create([
