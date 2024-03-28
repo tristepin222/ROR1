@@ -14,6 +14,17 @@
     <%= classroom.room %>
   </p>
 
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Students:</strong>
+  </p>
+  
+  <% students = classroom.people.select { |person| person.student? }.uniq %>
+  <% students.each do |student| %>
+    <p class="my-5">
+      <%= student.first_name %>
+    </p>
+  <% end %>
+
   <% if action_name != "show" %>
     <%= link_to "Show this classroom", classroom, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this classroom", edit_classroom_path(classroom), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>

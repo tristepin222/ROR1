@@ -14,10 +14,22 @@
     <%= person.last_name %>
   </p>
 
+  <% classrooms_by_year = Hash.new { |hash, key| hash[key] = [] } %>
+  <% person.person_belongs_to_classrooms&.each do |classroom| %>
+    <% year = classroom.start_date %>
+    <% classrooms_by_year[year] << classroom %>
+  <% end %>
+
+  <% sorted_classrooms_by_year = classrooms_by_year.sort_by { |year, _| year }.reverse %>
+
+
+  <% sorted_classrooms_by_year.each do |year, classrooms| %>
+  <h2>Year: <%= year.year %>-<%= year.year + 1 %></h2>
   <p class="my-5">
     <strong class="block font-medium mb-1">Class rooms:</strong>
-    <%= person.classrooms.first&.name %>
+    <%= classrooms.first.classroom.name %>
   </p>
+  <% end %>
 
 
   <% if action_name != "show" %>
