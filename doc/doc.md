@@ -19,13 +19,13 @@ Key Features:
 
 - Exam Management: Enable teachers to create exams for each subject, specify the exam date, title, and coefficient (weightage), and associate exams with subjects. Teachers should be able to view and manage the list of exams for each subject.
 
-- Grade Entry: Provide teachers with the ability to enter grades for students for each exam. Grades may be numeric or letter grades based on the grading system adopted by the institution.
+- Grade Entry: Provide teachers with the ability to enter grades for students for each exam. Grades may be numeric.
 
-- Grade Calculation: Automatically calculate the overall grade for each student based on the grades obtained in individual exams and the exam coefficients. Optionally, support different grading methods such as weighted averages or weighted sum of scores.
-
+- Grade Calculation: Automatically calculate the overall grade for each student based on the grades obtained in individual exams and the exam coefficients.
+  
 - Grade History: Maintain a history of grades entered for each student, allowing teachers to track changes in grades over time and view historical grade records.
 
-- Lesson History: Record and track the history of lessons conducted for each subject and student. Teachers can view past lesson details, including dates, topics covered, and attendance records.
+- Lesson History: Record and track the history of lessons conducted for each subject and student. Teachers can view past lesson details, including dates, topics covered.
 
 
 ## Roles
