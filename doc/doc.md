@@ -70,6 +70,10 @@ it's managed with dates, lessons can be archived by deans, and once archived, th
 
 thought process is, that lessons gets archived by themselves by their end date being older than the current date, or by manually set by a dean
 
-### Historic
+### grade historic
 
 Grade historic can be viewed in a student grades
+
+### class historic
+
+Class historic can be viewed in the peopole's list, with which school year the class was taken
