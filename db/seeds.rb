@@ -45,11 +45,11 @@ classrooms = Classroom.create([
 
 # Create people (both teachers and students)
 people = Person.create([
-  { gender: 'Male', first_name: 'John', last_name: 'Doe', birth_date: Date.new(1980, 1, 1), address: '123 Main St', password: "12341234", password_confirmation: "12341234", phone_number: '123-456-7890', email: 'john@example.com', is_teacher: true, locality: localities.first, type: 'Teacher' },
-  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane@example.com', is_teacher: false, locality: localities.second, type: 'Student' },
-  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane2@example.com', is_teacher: false, locality: localities.second, type: 'Student' },
-  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane3@example.com', is_teacher: false, locality: localities.second, type: 'Student' },
-  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane4@example.com', is_teacher: false, locality: localities.third, type: 'Dean' }
+  { gender: 'Male', first_name: 'John', last_name: 'Doe', birth_date: Date.new(1980, 1, 1), address: '123 Main St', password: "12341234", password_confirmation: "12341234", phone_number: '123-456-7890', email: 'john@example.com', locality: localities.first, type: 'Teacher' },
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane@example.com', locality: localities.second, type: 'Student' },
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane2@example.com', locality: localities.second, type: 'Student' },
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane3@example.com', locality: localities.second, type: 'Student' },
+  { gender: 'Female', first_name: 'Jane', last_name: 'Smith', birth_date: Date.new(1990, 2, 2), address: '456 Elm St', password: "12341234", password_confirmation: "12341234", phone_number: '987-654-3210', email: 'jane4@example.com', locality: localities.third, type: 'Dean' }
 ])
 
 # Assign people to classrooms
