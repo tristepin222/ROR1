@@ -67,7 +67,7 @@ For more info please check the wiki.
 
 ## documentation 
 
-you can find everything about the project's doc, under the `doc` folder
+you can find everything about the project's doc, under the [doc](https://github.com/tristepin222/ROR1/blob/main/doc/doc.md) folder
 
 ## License
 
