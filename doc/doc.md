@@ -78,3 +78,9 @@ Grade historic can be viewed in a student grades
 
 Class historic can be viewed in the peopole's list, with which school year the class was taken
 
+### grade report
+
+the grade report can be generated in the student grades list, only deans can generate reports
+
+the basic formula : Sum(grades)/Count(grades)+1 is applied to calculate the total
+
