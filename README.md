@@ -25,6 +25,8 @@ and start by doing an installation of every gems by doing.
 
 `rails db:migrate`
 
+if you wish to use seed data, you can run `rails db:seed`.
+
 and then you can start the server.
 
 `ruby bin/rails server` or `rails server`.
